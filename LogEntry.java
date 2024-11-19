@@ -26,6 +26,7 @@ public class LogEntry implements Comparable<LogEntry>
     // to match.
     private static final int NUMBER_OF_FIELDS = 5;
                       
+
     /**
      * Decompose a log line so that the individual fields
      * are available.
@@ -39,7 +40,7 @@ public class LogEntry implements Comparable<LogEntry>
         dataValues = new int[NUMBER_OF_FIELDS];
         // Break up the log line.
         LoglineTokenizer tokenizer = new LoglineTokenizer();
-        tokenizer.tokenize(logline,dataValues);
+        tokenizer.tokenize(logline, dataValues);
         setWhen();
     }
     
@@ -81,6 +82,24 @@ public class LogEntry implements Comparable<LogEntry>
         return dataValues[MINUTE];
     }
     
+    /**
+     * Return the day (1-31).
+     * @return The day field from the log line.
+     */
+    public int getDay()
+    {
+        return dataValues[DAY];
+    }
+
+    /**
+     * Return the month (1-12).
+     * @return The month field from the log line.
+     */
+    public int getMonth()
+    {
+        return dataValues[MONTH];
+    }
+
     /**
      * Create a string representation of the data.
      * This is not necessarily identical with the
@@ -136,5 +155,4 @@ public class LogEntry implements Comparable<LogEntry>
                  dataValues[MONTH] - 1, dataValues[DAY] - 1,
                  dataValues[HOUR], dataValues[MINUTE]);
     }
-    
 }
